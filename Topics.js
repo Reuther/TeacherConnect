@@ -37,14 +37,18 @@ allTopics.push(topic1,topic2,topic3);
 console.log(allTopics);
 console.log(allTopics.length);
 function checkTopic () {
+    var boolean = false;
     for (i = 0; i < allTopics.length; i++) {
+        console.log("Antal gange loopet kører:" + i);
         if (enteredTopic.value == allTopics[i].topic) {
-            alert("Du har valgt en af de topics der eksisterer");
+            alert("DU har valgt en af de topics der eksisterer")
             allTopics[i].popCounter++;
             console.log(allTopics);
+            boolean = true;
             break;
         }
-        else if (enteredTopic.value != allTopics[i].topic) {
+    }
+        if (boolean === false) {
             alert("Du har valgt en af de topics der ikke eksisterer");
             id_gen();
             var topicx = new Topic(
@@ -53,10 +57,8 @@ function checkTopic () {
             topicx.id = id_generator;
             console.log(topicx);
             allTopics.push(topicx);
-            break;
         }
     }
-}
 
 var submitButton = document.getElementById("submitButton");
 submitButton.onclick = function () {
